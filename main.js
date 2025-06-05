@@ -46,6 +46,9 @@ function creaTimer(ms) {
   }, ms);
 }
 
+const timer3s = creaTimer(3000);
+timer3s();
+
 // 🏆 Snack 5
 // Crea una funzione stampaOgniSecondo con setInterval.
 // Definisci una funzione che accetta un messaggio e lo stampa ogni secondo.
@@ -56,3 +59,42 @@ function stampaOgniSecondo(mess) {
     console.log(mess);
   }, 1000);
 }
+
+stampaOgniSecondo("ciao");
+
+// 🏆 Snack 6
+// Crea un contatore automatico con setInterval
+// Definisci una funzione creaContatoreAutomatico che accetta un intervallo di tempo e restituisce una funzione che
+// avvia un setInterval, incrementando un contatore e stampandolo.
+
+function creaContatoreAutomatico(time) {
+  let count = 0;
+  return () => {
+    setInterval(() => {
+      count++;
+      console.log(count);
+    }, time);
+  };
+}
+const conta1sec = creaContatoreAutomatico(1000);
+conta1sec();
+
+// 🏆 Snack 7
+// Crea una funzione che ferma un timer dopo un certo tempo
+// Scrivi una funzione eseguiEferma che accetta un messaggio, un tempo di avvio e un tempo di stop.
+// Il messaggio deve essere stampato a intervalli regolari, ma si deve fermare dopo il tempo di stop.
+
+function eseguiEferma(mess, tempoAvvio, tempoStop) {
+  const intervalId = setInterval(() => {
+    console.log(mess);
+  }, tempoAvvio);
+
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, tempoStop);
+}
+
+const messaggio = "Ciao";
+const msPerAvvio = 2000;
+const msPerStop = 10000;
+eseguiEferma(messaggio, msPerAvvio, msPerStop);
